@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms'
 
 import { TemplateRoutingModule } from './template-routing.module';
 import { FormularioComponent } from './formulario/formulario.component';
@@ -11,11 +12,12 @@ import { MainComponent } from './main/main.component';
   declarations: [
     FormularioComponent,
     ResultadoComponent,
-    MainComponent
+    MainComponent,
   ],
   imports: [
     CommonModule,
-    TemplateRoutingModule
+    TemplateRoutingModule,
+    FormsModule
   ]
 })
 export class TemplateModule { }

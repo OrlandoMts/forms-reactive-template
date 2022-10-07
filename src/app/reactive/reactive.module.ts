@@ -5,6 +5,7 @@ import { ReactiveRoutingModule } from './reactive-routing.module';
 import { FormularioComponent } from './formulario/formulario.component';
 import { ResultadoComponent } from './resultado/resultado.component';
 import { MainComponent } from './main/main.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -15,7 +16,8 @@ import { MainComponent } from './main/main.component';
   ],
   imports: [
     CommonModule,
-    ReactiveRoutingModule
+    ReactiveRoutingModule,
+    ReactiveFormsModule
   ]
 })
 export class ReactiveModule { }

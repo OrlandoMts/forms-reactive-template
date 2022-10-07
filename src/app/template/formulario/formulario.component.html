@@ -1,1 +1,84 @@
-<p>formulario template works!</p>
+<div class="row">
+  <div class="col-12">
+    <form (ngSubmit)="onSubmit()" #myForm="ngForm" autocomplete="off">
+
+      <!-- Input #1 -->
+      <div class="my-3 row">
+        <label for="name">Nombre</label>
+        <div class="col-sm-9">
+          <input
+              type="text"
+              id="name"
+              placeholder="Ingresa tu nombre completo"
+              #name="ngModel"
+              [(ngModel)]="register.name"
+              name="name"
+              minlength="5"
+              class="form-control"
+              required
+              [ngClass]="{'is-valid': name.valid}"
+            />
+            <div *ngIf="name.invalid && (name.dirty || name.touched)" >
+              <span *ngIf="name.errors?.['minlength']" class="form-text text-danger" >Ingresa un nombre de minimo 5 letras</span>
+              <span *ngIf="name.errors?.['required']" class="form-text text-danger">Ingresa un nombre valido</span>
+            </div>
+        </div>
+      </div>
+
+      <!-- input #2 -->
+      <div class="my-3 row">
+        <label for="email">Correo</label>
+        <div class="col-sm-9">
+          <input
+              type="email"
+              id="email"
+              placeholder="Ingresa tu correo electronico"
+              #email="ngModel"
+              [(ngModel)]="register.email"
+              name="email"
+              class="form-control"
+              required
+              [ngClass]="{'is-valid': !email.invalid}"
+              pattern="^[a-zA-Z0-9._-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$"
+            />
+            <div *ngIf="email.invalid && (email.dirty || email.touched)" >
+              <span *ngIf="email.errors?.['required']" class="form-text text-danger" >Ingresa un correo valido por favor {{email.value}}</span>
+              <span *ngIf="email.errors && email.errors?.['pattern']" class="form-text text-danger" >El correo electrónico no sigue el formato correcto. Sigue este ejemplo: correo@gmail.com
+                {{ email.value }}</span>
+            </div>
+        </div>
+      </div>
+
+      <!-- input #3 -->
+      <div class="my-3 row">
+        <label for="password">Contraseña</label>
+        <div class="col-sm-9">
+          <input
+              type="password"
+              id="password"
+              placeholder="Ingresa una contraseña"
+              #password="ngModel"
+              [(ngModel)]="register.password"
+              name="password"
+              class="form-control"
+              required
+              [ngClass]="{'is-valid': !password.invalid}"
+            />
+            <div *ngIf="password.invalid && (password.dirty || password.touched)" >
+              <span *ngIf="password.errors?.['required']" class="form-text text-danger" >Ingresa una contraseña</span>
+            </div>
+        </div>
+      </div>
+
+      <!-- Boton de envio -->
+      <div class="row">
+        <div class="col">
+          <button type="submit" [disabled]="myForm.invalid" class="btn btn-primary">
+            Registrar
+          </button>
+        </div>
+      </div>
+
+    </form>
+  </div>
+</div>
