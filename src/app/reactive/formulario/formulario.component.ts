@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 
 @Component({
   selector: 'app-formulario',
@@ -8,9 +9,27 @@ import { Component, OnInit } from '@angular/core';
 })
 export class FormularioComponent implements OnInit {
 
-  constructor() { }
+  public species = ['Marino', 'Terrestre', 'Volador'];
+
+  public myForm: FormGroup = this.fb.group({
+    name: ['', [Validators.required, Validators.minLength(3)]],
+    specie: ['', Validators.required],
+    extingued: ['']
+  })
+
+  constructor(private fb: FormBuilder) { }
 
   ngOnInit(): void {
   }
+
+  onSubmit(): void {
+    if (this.myForm.invalid) return;
+
+    if (this.myForm.controls['extingued'].value == "") {
+      this.myForm.get('extingued')?.setValue(false);
+    }
+    console.log(this.myForm.value)
+    this.myForm.reset();
+   }
 
 }

@@ -1,8 +1,9 @@
 <div class="p-2 border rounded shadow-sm">
   <h3>Cuentas creadas</h3>
+  <small *ngIf="accsUser.length == 0" >Registra una cuenta</small>
   <div *ngFor="let account of accsUser">
-    <p class="m-0">{{account.name}}</p>
-    <p>{{account.email}}</p>
+    <p class="m-0">Nombre {{account.name}}</p>
+    <p>Correo{{account.email}}</p>
   </div>
   <hr>
   <h3>Animales creados</h3>

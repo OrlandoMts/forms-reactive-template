@@ -18,7 +18,6 @@ export class ResultadoComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.raiseSubscriptions();
-    console.log('variable del comp: ', this.accsUser)
   }
 
   ngOnDestroy(): void {

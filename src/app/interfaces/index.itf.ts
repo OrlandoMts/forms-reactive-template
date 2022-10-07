@@ -8,3 +8,9 @@ export interface IRegisterForm {
   email: string,
   password: string
 }
+
+export interface Animal {
+  name: string,
+  specie: string,
+  extingued: boolean
+}
