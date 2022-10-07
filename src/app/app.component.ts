@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { MenuItem } from './interfaces/index.itf';
 
 @Component({
   selector: 'app-root',
@@ -7,4 +8,9 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'formularios';
+
+  templateMenu: MenuItem[] = [
+    {texto: 'Ir a los formularios por template', ruta: '/template'},
+    {texto: 'Ir a los formularios reactivos', ruta: '/reactive'}
+  ]
 }
