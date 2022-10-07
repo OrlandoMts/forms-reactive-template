@@ -6,6 +6,5 @@ export interface MenuItem {
 export interface IRegisterForm {
   name: string,
   email: string,
-  password: string,
-  repeatPass: string
+  password: string
 }
