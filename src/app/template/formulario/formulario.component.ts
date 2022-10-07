@@ -29,7 +29,7 @@ export class FormularioComponent implements OnInit {
     if(this.myForm.invalid) return;
     this.formsService.setDataUser(this.myForm.value)
 
-    console.log(this.formsService.accountsUser);
+    // console.log(this.formsService.accountsUser);
   }
 
 }

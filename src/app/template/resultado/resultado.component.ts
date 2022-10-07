@@ -1,4 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
+import { catchError, filter, map, of, Subscription } from 'rxjs';
+import { IRegisterForm } from 'src/app/interfaces/index.itf';
+import { FormsService } from 'src/app/services/forms.service';
 
 @Component({
   selector: 'app-resultado',
@@ -6,11 +9,33 @@ import { Component, OnInit } from '@angular/core';
   styles: [
   ]
 })
-export class ResultadoComponent implements OnInit {
+export class ResultadoComponent implements OnInit, OnDestroy {
 
-  constructor() { }
+  private _accUserSub!: Subscription;
+  public accsUser!: IRegisterForm[];
+
+  constructor(private formsService: FormsService) { }
 
   ngOnInit(): void {
+    this.raiseSubscriptions();
+    console.log('variable del comp: ', this.accsUser)
+  }
+
+  ngOnDestroy(): void {
+    this.closeSubscriptions();
+  }
+
+
+  raiseSubscriptions(): void {
+    this._accUserSub = this.formsService.accUserSub$
+                            .pipe(
+                              catchError(err => of(err))
+                            )
+                            .subscribe( (_accUsers) => _accUsers && (this.accsUser = _accUsers) )
+  }
+
+  closeSubscriptions(): void {
+    if (this._accUserSub && !this._accUserSub.closed) this._accUserSub.unsubscribe();
   }
 
 }

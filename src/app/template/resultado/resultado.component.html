@@ -1,7 +1,9 @@
 <div class="p-2 border rounded shadow-sm">
   <h3>Cuentas creadas</h3>
-  <p class="m-0">Nombre de la cuenta</p>
-  <p>Correo</p>
+  <div *ngFor="let account of accsUser">
+    <p class="m-0">{{account.name}}</p>
+    <p>{{account.email}}</p>
+  </div>
   <hr>
   <h3>Animales creados</h3>
   <p class="m-0">Nombre del animal</p>
