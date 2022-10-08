@@ -1,16 +1,15 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
-import { catchError, filter, map, of, Subscription } from 'rxjs';
+import { Component, OnInit } from '@angular/core';
+import { catchError, of, Subscription } from 'rxjs';
 import { IRegisterForm } from 'src/app/interfaces/index.itf';
 import { FormsService } from 'src/app/services/forms.service';
 
 @Component({
-  selector: 'app-resultado',
-  templateUrl: './resultado.component.html',
+  selector: 'app-results',
+  templateUrl: './results.component.html',
   styles: [
   ]
 })
-export class ResultadoComponent implements OnInit, OnDestroy {
-
+export class ResultsComponent implements OnInit {
   private _accUserSub!: Subscription;
   public accsUser!: IRegisterForm[];
 
@@ -36,5 +35,4 @@ export class ResultadoComponent implements OnInit, OnDestroy {
   closeSubscriptions(): void {
     if (this._accUserSub && !this._accUserSub.closed) this._accUserSub.unsubscribe();
   }
-
 }

@@ -10,7 +10,7 @@ export class AppComponent {
   title = 'formularios';
 
   templateMenu: MenuItem[] = [
-    {texto: 'Ir a los formularios por template', ruta: '/template'},
-    {texto: 'Ir a los formularios reactivos', ruta: '/reactive'}
+    {texto: 'Ir a los formularios por template - Cuentas', ruta: '/template'},
+    {texto: 'Ir a los formularios reactivos - Animalitos', ruta: '/reactive'}
   ]
 }
