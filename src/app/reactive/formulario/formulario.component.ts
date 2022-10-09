@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
+import { FormsService } from 'src/app/services/forms.service';
 
 @Component({
   selector: 'app-formulario',
@@ -14,10 +15,10 @@ export class FormularioComponent implements OnInit {
   public myForm: FormGroup = this.fb.group({
     name: ['', [Validators.required, Validators.minLength(3)]],
     specie: ['', Validators.required],
-    extingued: ['']
+    extingued: [false]
   })
 
-  constructor(private fb: FormBuilder) { }
+  constructor(private fb: FormBuilder, private formsService: FormsService) { }
 
   ngOnInit(): void {
   }
@@ -25,10 +26,8 @@ export class FormularioComponent implements OnInit {
   onSubmit(): void {
     if (this.myForm.invalid) return;
 
-    if (this.myForm.controls['extingued'].value == "") {
-      this.myForm.get('extingued')?.setValue(false);
-    }
-    console.log(this.myForm.value)
+    // console.log(this.myForm.value)
+    this.formsService.setDataAnimal(this.myForm.value);
     this.myForm.reset();
    }
 

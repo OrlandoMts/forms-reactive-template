@@ -2,12 +2,21 @@
   <h3>Cuentas creadas</h3>
   <small *ngIf="accsUser.length == 0" >Registra una cuenta</small>
   <div *ngFor="let account of accsUser">
-    <p class="m-0">Nombre {{account.name}}</p>
-    <p>Correo{{account.email}}</p>
+    <div class="card shadow-sm my-2 ">
+      <p class="m-0">Nombre: {{account.name}}</p>
+      <p class="bold">Correo: <span>{{account.email}}</span></p>
+    </div>
   </div>
   <hr>
   <h3>Animales creados</h3>
-  <p class="m-0">Nombre del animal</p>
-  <p class="m-0">Tipo de animal</p>
-  <p>Extinto</p>
+  <small *ngIf="animals.length == 0">Registra un animalito</small>
+
+  <div *ngFor="let animal of animals">
+    <div class="card shadow-sm my-2 ">
+      <p class="m-0">Nombre: {{animal.name}}</p>
+      <p class="m-0">Especie: {{animal.specie}}</p>
+      <p>Extinguido: {{animal.extingued | yesNo}}</p>
+    </div>
+  </div>
+
 </div>

@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
-import { IRegisterForm } from '../interfaces/index.itf';
+import { Animal, IRegisterForm } from '../interfaces/index.itf';
 
 @Injectable({
   providedIn: 'root'
@@ -11,6 +11,10 @@ export class FormsService {
   private _accUserSub$ = new BehaviorSubject<IRegisterForm[]>(this._accountsUser);
   public accUserSub$ = this._accUserSub$.asObservable();
 
+  private _countAnimals: Animal[] = [];
+  private _countAnimalsSub$ = new BehaviorSubject<Animal[]>(this._countAnimals);
+  public countAnimals$ = this._countAnimalsSub$.asObservable();
+
   constructor() { }
 
   public setDataUser(user: IRegisterForm): void {
@@ -18,6 +22,9 @@ export class FormsService {
     this._accUserSub$.next(this._accountsUser); // Listo para emitirlo
   }
 
-  public setDataAnimal(): void {}
+  public setDataAnimal(animal: Animal): void {
+    this._countAnimals.push(animal);
+    this._countAnimalsSub$.next(this._countAnimals);
+  }
 
 }
